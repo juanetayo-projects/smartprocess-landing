@@ -1,3 +1,5 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SmartProcess</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,6 +62,8 @@
 
   @media (max-width: 640px) {
     .wrap { padding-inline: 20px; }
+    .brand-sub { display: none; }
+    .nav-cta { padding: 10px 16px; font-size: 13px; }
   }
 
   /* ---------- Announcement bar ---------- */
@@ -239,15 +243,41 @@
   }
   .glow-1 { width: 280px; height: 280px; background: var(--color-mint-pulse); top: -40px; right: -40px; }
   .glow-2 { width: 220px; height: 220px; background: var(--color-soft-teal); bottom: -30px; left: -30px; opacity: 0.3; }
+  .glow-3 { width: 140px; height: 140px; background: var(--color-mint-pulse); top: 34px; left: -10px; opacity: 0.22; }
 
-  .panel-stack { position: relative; width: 340px; z-index: 1; }
+  .panel-stack { position: relative; width: 340px; max-width: 100%; z-index: 1; margin-top: 30px; }
   .panel-card {
     background: var(--color-paper);
     border: 1px solid var(--color-mist);
     border-radius: var(--radius-xl);
     padding: 20px;
   }
-  .panel-main { position: relative; }
+  .panel-main { position: relative; z-index: 1; }
+
+  .panel-peek {
+    position: absolute;
+    top: 20px;
+    left: -96px;
+    width: 118px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    padding: 16px 12px;
+    transform: rotate(-5deg);
+    z-index: 0;
+  }
+  .ring-gauge circle:first-child { stroke: var(--color-mist); }
+  .ring-label { display: flex; flex-direction: column; align-items: center; line-height: 1.25; }
+  .ring-label strong {
+    font-family: var(--font-inter);
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--color-deep-teal);
+  }
+  .ring-label span { font-size: 10.5px; color: var(--color-slate); margin-top: 2px; }
   .panel-kpi-label {
     font-size: 12px;
     color: var(--color-slate);
@@ -289,6 +319,11 @@
     width: 7px; height: 7px; border-radius: 50%;
     background: var(--color-mint-pulse);
     flex: none;
+    animation: pulse-dot 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(46,206,160,0.45); }
+    50% { box-shadow: 0 0 0 6px rgba(46,206,160,0); }
   }
 
   .panel-secondary {
@@ -310,7 +345,8 @@
     .hero { grid-template-columns: 1fr; }
     .hero-left { padding: 64px 24px; }
     .hero-left .inner { margin-left: 0; }
-    .hero-right { min-height: 380px; padding: 56px 24px; }
+    .hero-right { min-height: 420px; padding: 64px 24px 56px; }
+    .panel-peek { left: 6px; top: -46px; width: 104px; transform: rotate(-4deg); }
   }
 
   /* ---------- Section shell ---------- */
@@ -659,7 +695,7 @@
         <rect x="17" y="1" width="5" height="21" rx="1.5" fill="currentColor"/>
       </svg>
       <span class="brand-name">SmartProcess</span>
-      <span>TECNOLOGÍA INTELIGENTE</span>
+      <span class="brand-sub">TECNOLOGÍA INTELIGENTE</span>
     </a>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
@@ -687,7 +723,17 @@
   <div class="hero-right">
     <div class="glow glow-1"></div>
     <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
     <div class="panel-stack">
+      <div class="panel-card panel-peek">
+        <svg class="ring-gauge" width="72" height="72" viewBox="0 0 88 88">
+          <circle cx="44" cy="44" r="38" fill="none" stroke-width="9" />
+          <circle cx="44" cy="44" r="38" fill="none" stroke="#2ecea0" stroke-width="9"
+            stroke-dasharray="238.8" stroke-dashoffset="14.3" stroke-linecap="round"
+            transform="rotate(-90 44 44)" />
+        </svg>
+        <div class="ring-label"><strong>94%</strong><span>SLA cumplido</span></div>
+      </div>
       <div class="panel-card panel-main">
         <div class="panel-kpi-label">Eficiencia de proceso — últimas 6 semanas</div>
         <div class="panel-kpi-value">89<sup>%</sup></div>
@@ -997,7 +1043,7 @@
         <rect x="17" y="1" width="5" height="21" rx="1.5" fill="currentColor"/>
       </svg>
       <span class="brand-name">SmartProcess</span>
-      <span>TECNOLOGÍA INTELIGENTE</span>
+      <span class="brand-sub">TECNOLOGÍA INTELIGENTE</span>
     </a>
         <p class="foot-tag">Tecnología inteligente para procesos más eficientes.</p>
       </div>
