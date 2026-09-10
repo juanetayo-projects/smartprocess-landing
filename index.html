@@ -578,7 +578,7 @@
     transition: opacity .15s ease;
   }
   .lightbox.is-open { opacity: 1; pointer-events: auto; }
-  .lightbox-img { max-width: 94vw; max-height: 88vh; border-radius: var(--radius-lg); display: block; }
+  .lightbox-img { width: min(94vw, 860px); height: auto; max-height: 88vh; border-radius: var(--radius-lg); display: block; }
   .lightbox-close {
     position: absolute;
     top: 24px;
